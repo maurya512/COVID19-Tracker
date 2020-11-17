@@ -6,16 +6,21 @@ import styles from './App.module.css';
 import { fetchData } from './api';
 
 class App extends React.Component {
+    // declaring the state like this also creates a constructor in the backend
+    state = {
+        data: {},
+    }
     // aysnc await on componentDitMount to check whether the app is receiving any data from the fetchData function 
     async componentDidMount() {
         // making request to fetchData
-        const data = await fetchData();
-        console.log(data);
+        const fetchedData = await fetchData();
+        this.setState({ data: fetchedData})
     }
     render() {
+        const { data } = this.state;
         return (
             <div className={styles.container}>
-                <Cards />
+                <Cards data={data}/>
                 <CountryPicker />
                 <Chart />
             </div>

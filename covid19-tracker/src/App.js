@@ -5,6 +5,7 @@ import { Cards, Chart, CountryPicker } from './components';
 import styles from './App.module.css';
 import { fetchData } from './api';
 
+import covidImg from './images/image.jpg'
 class App extends React.Component {
     // declaring the state like this also creates a constructor in the backend
     state = {
@@ -27,6 +28,7 @@ class App extends React.Component {
         const { data, country } = this.state;
         return (
             <div className={styles.container}>
+                <img className={styles.image}src={covidImg} alt="Covid-19" />
                 <Cards data={data}/>
                 <CountryPicker handleCountryChange={this.handleCountryChange }/>
                 <Chart data={data} country={country}/>
